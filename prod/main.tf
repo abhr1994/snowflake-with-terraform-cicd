@@ -9,7 +9,7 @@ terraform {
 backend "local" {
     path = "backend/terraform-prod.tfstate"
   }
-
+}
 provider "snowflake" {
   username    = "CICD_DEPLOYER"
   account     = "infoworks_partner"
