@@ -6,18 +6,11 @@ terraform {
     }
   }
 
-  # backend "s3" {
-  #   bucket         = "<your-bucket-name>"
-  #   key            = "terraform-staging.tfstate"
-  #   region         = "<bucket-region>"
-  #   # Optional DynamoDB for state locking. See https://developer.hashicorp.com/terraform/language/settings/backends/s3 for details.
-  #   # dynamodb_table = "terraform-state-lock-table"
-  #   encrypt        = true
-  #   role_arn       = "arn:aws:iam::<your-aws-account-no>:role/<terraform-s3-backend-access-role>"
-  # }
-
-  backend "local" {
-    path = "backend/terraform-staging.tfstate"
+    backend "azurerm" {
+    resource_group_name = "iw-azure-cs-db-cluster"
+    storage_account_name = "cicddatalake"
+    container_name       = "tfstate"
+    key                  = "terraform-staging.tfstate"
   }
 
 }
