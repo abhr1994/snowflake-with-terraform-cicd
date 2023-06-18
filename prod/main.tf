@@ -6,10 +6,12 @@ terraform {
     }
   }
 
-backend "local" {
-    path = "backend/terraform-prod.tfstate"
-  }
-}
+  backend "azurerm" {
+    resource_group_name = "iw-azure-cs-db-cluster"
+    storage_account_name = "cicddatalake"
+    container_name       = "tfstate"
+    key                  = "terraform-prod.tfstate"
+  }}
 provider "snowflake" {
   username    = "CICD_DEPLOYER"
   account     = "infoworks_partner"
