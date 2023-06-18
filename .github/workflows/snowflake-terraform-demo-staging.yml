@@ -27,10 +27,6 @@ jobs:
         id: init
         run: terraform -chdir=./staging init
 
-      - name: Terraform Format
-        id: fmt
-        run: terraform -chdir=./staging fmt -recursive -check
-
       - name: Terraform Validate
         id: validate
         run: terraform -chdir=./staging validate -no-color

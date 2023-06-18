@@ -6,8 +6,8 @@ terraform {
     }
   }
 
-    backend "azurerm" {
-    resource_group_name = "iw-azure-cs-db-cluster"
+  backend "azurerm" {
+    resource_group_name  = "iw-azure-cs-db-cluster"
     storage_account_name = "cicddatalake"
     container_name       = "tfstate"
     key                  = "terraform-staging.tfstate"
