@@ -1,8 +1,8 @@
 # CI/CD pipeline with Snowflake
 Demo of a simple CI/CD pipeline deployed onto Snowflake with Terraform
 
-[![PRODUCTION ENV: Snowflake Terraform Demo Workflow](https://github.com/sfc-gh-sekim/cicd-snowflake-with-terraform-demo/actions/workflows/snowflake-terraform-demo-prod.yml/badge.svg)](https://github.com/sfc-gh-sekim/cicd-snowflake-with-terraform-demo/actions/workflows/snowflake-terraform-demo-prod.yml)
-[![STAGING ENV: Snowflake Terraform Demo Workflow](https://github.com/sfc-gh-sekim/cicd-snowflake-with-terraform-demo/actions/workflows/snowflake-terraform-demo-staging.yml/badge.svg)](https://github.com/sfc-gh-sekim/cicd-snowflake-with-terraform-demo/actions/workflows/snowflake-terraform-demo-staging.yml)
+[![PRODUCTION ENV: Snowflake Terraform Demo Workflow](https://github.com/abhr1994/snowflake-with-terraform-cicd/actions/workflows/snowflake-terraform-demo-prod.yml/badge.svg)](https://github.com/abhr1994/snowflake-with-terraform-cicd/actions/workflows/snowflake-terraform-demo-prod.yml)
+[![STAGING ENV: Snowflake Terraform Demo Workflow](https://github.com/abhr1994/snowflake-with-terraform-cicd/actions/workflows/snowflake-terraform-demo-staging.yml/badge.svg)](https://github.com/abhr1994/snowflake-with-terraform-cicd/actions/workflows/snowflake-terraform-demo-staging.yml)
 
 ![diagram](./docs/cicd_flow_diagram.png)
 
@@ -22,7 +22,7 @@ This Terraform project creates grants for a `TF_DEMO_READER` custom role, which 
 create role TF_DEMO_READER;
 
 --Grant to this to a user of your choice
-grant role TF_DEMO_READER to user MY_ROLE;
+grant role TF_DEMO_READER to user CICD_DEPLOYER;
 ```
 
 ### Terraform
@@ -38,8 +38,10 @@ If you'd like to see Github actions workflow in action, fork this repository.
 
 The Github Actions workflows authenticate to Snowflake via secrets uploaded to Github Actions. On your forked repo, set up the following Repository Secrets:
 
-- AWS_ACCESS_KEY_ID: For authenticating with AWS
-- AWS_SECRET_ACCESS_KEY: For authenticating with AWS
+- ARM_SUBSCRIPTION_ID: Needed for Terraform Azure Backend
+- ARM_CLIENT_ID: Needed for Terraform Azure Backend
+- ARM_CLIENT_SECRET: Needed for Terraform Azure Backend
+- ARM_TENANT_ID: Needed for Terraform Azure Backend
 - SNOWFLAKE_PRIVATE_KEY: This is your private key you use to authenticate to Snowflake via key-pair authentication
 
 
