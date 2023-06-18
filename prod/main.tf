@@ -11,7 +11,8 @@ terraform {
     storage_account_name = "cicddatalake"
     container_name       = "tfstate"
     key                  = "terraform-prod.tfstate"
-  }}
+  }
+  }
 provider "snowflake" {
   username    = "CICD_DEPLOYER"
   account     = "infoworks_partner"
