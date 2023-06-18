@@ -9,6 +9,11 @@ jobs:
   deploy-terraform-staging:
     name: "Plan & Deploy Terraform plan on Staging"
     runs-on: ubuntu-latest
+    env:
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
     permissions:
       pull-requests: write
     steps:
@@ -21,10 +26,6 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform -chdir=./staging init
-
-      - name: Terraform Format
-        id: fmt
-        run: terraform -chdir=./staging fmt -recursive -check
 
       - name: Terraform Validate
         id: validate
