@@ -3,7 +3,7 @@ resource "snowflake_table" "demo_table" {
   schema     = snowflake_schema.tf_demo_schema.name
   depends_on = [snowflake_table_grant.table_ro_grant]
   name       = "DEMO_TABLE"
-  comment    = "An empty table for Terraform demo"
+  comment    = "An empty demo table for Terraform demo"
 
   column {
     name     = "id"
