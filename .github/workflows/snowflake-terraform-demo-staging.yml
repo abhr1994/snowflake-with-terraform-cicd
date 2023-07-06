@@ -31,6 +31,10 @@ jobs:
         id: validate
         run: terraform -chdir=./staging validate -no-color
 
+      - name: Terraform Import
+        id: import
+        run: terraform -chdir=./staging import module.snowflake_resources.snowflake_storage_integration.integration AR_AZURE_INT; terraform -chdir=./staging import module.snowflake_resources.snowflake_notification_integration.integration MY_NOTIFICATION_INTEGRATION
+      
       - name: Terraform Plan
         id: plan
         run: terraform -chdir=./staging plan 
