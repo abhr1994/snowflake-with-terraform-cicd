@@ -33,10 +33,12 @@ jobs:
 
       - name: Terraform Import
         id: import
-        run: terraform -chdir=./staging import module.snowflake_resources.snowflake_storage_integration.integration AR_AZURE_INT; terraform -chdir=./staging import module.snowflake_resources.snowflake_notification_integration.integration MY_NOTIFICATION_INTEGRATION
+        run: |
+              chmod +x ./import_script.sh;
+              ./import_script.sh
         env:
           TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
-          
+
       - name: Terraform Plan
         id: plan
         run: terraform -chdir=./staging plan 
