@@ -35,7 +35,7 @@ jobs:
         id: import
         run: |
               chmod +x ./import_script.sh;
-              ./import_script.sh
+              ./import_script.sh staging
         env:
           TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
