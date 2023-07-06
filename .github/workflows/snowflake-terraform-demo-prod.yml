@@ -31,6 +31,14 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform -chdir=./prod validate -no-color
+      
+      - name: Terraform Import
+        id: import
+        run: |
+              chmod +x ./import_script.sh;
+              ./import_script.sh
+        env:
+          TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
       - name: Terraform Plan on Prod for PR
         id: plan
