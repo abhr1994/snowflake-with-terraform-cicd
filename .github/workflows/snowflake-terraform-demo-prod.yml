@@ -35,7 +35,9 @@ jobs:
       - name: Terraform Import
         id: import
         run: terraform -chdir=./prod import module.snowflake_resources.snowflake_storage_integration.integration AR_AZURE_INT; terraform -chdir=./prod import module.snowflake_resources.snowflake_notification_integration.integration MY_NOTIFICATION_INTEGRATION
-        
+        env:
+          TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+          
       - name: Terraform Plan on Prod for PR
         id: plan
         if: github.event_name == 'pull_request'
